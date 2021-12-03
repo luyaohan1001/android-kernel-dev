@@ -1,57 +1,57 @@
-#kernel/rtes/apps/hello/hello.c
+Experiments:
+
+## kernel/rtes/apps/hello/hello.c
 Write a small application in C that prints to the console:
 Hello, world! It's warm and cozy here in user-space.
 
 
-kernel/rtes/modules/psdev/psdev.c
+## kernel/rtes/modules/psdev/psdev.c
 Create a module with a device that when read will output a list of real-time threads with their thread IDs,
 process IDs, real-time priorities, and command names. 
 
 
-kernel/rtes/kernel/calc.c
+## kernel/rtes/kernel/calc.c
 Add a new system call called calc that takes four input parameters: two non-negative rational numbers
 as character strings, an operation (-, +, *, or /) as a character, and a buffer to store the result of applying
 the given arithmetic operation to the two numbers as a character string.3 Support a maximum number
 magnitude of at least 16-bits and a resolution of at least 10-bits after the decimal point. Fail with EINVAL
 when the result is not a number or the input parameters are not valid.
 
-kernel/rtes/apps/calc/calc.c
+## kernel/rtes/apps/calc/calc.c
 Write a user-level application that takes two non-negative rational numbers and a character operation
 from the command line (escaped with single quotes when needed), makes the calc system call, and outputs
 to stdout nothing but the result as a number in base 10 or nan.
 
-kernel/rtes/modules/cleanup/cleanup.c
+## kernel/rtes/modules/cleanup/cleanup.c
 Write an LKM that when loaded intercepts when a process exits and reports the paths of files it left
 open to the kernel log. Implement this strictly by overriding relevant syscalls without changing the process
 exiting logic. The override should be active only while the module is loaded.
 
-kernel/rtes/kernel/ps.c
+## kernel/rtes/kernel/ps.c
 Add a new system call count_rt_threads that can be used to obtain an integer value that equals the
 total number of real-time threads that currently exist in the system.
 Add a new system call list_rt_threads that can be used to obtain a data structure with the list of
 real-time threads that currently exist in the system. The following attributes should be available for each
 thread: TID, PID, real-time priority and name.
 
-kernel/rtes/apps/rtps/rtps.c
+## kernel/rtes/apps/rtps/rtps.c
 Write an application called rtps that displays a list of real-time threads that exist on the device in
 descending order of real-time priority.
 
-kernel/rtes/apps/periodic/periodic.c
+## kernel/rtes/apps/periodic/periodic.c
  Write a native userspace application that takes C, T , cpuid arguments on the command line and busy-
 loops for C μs every T μs on the CPU cpuid. Support C and T values up to 60,000 ms (60 secs). The app
 should be runnable on the stock kernel too: it does not rely on any of your modifications to the kernel.
 
-
-kernel/rtes/apps/reserve/reserve.c
+## kernel/rtes/apps/reserve/reserve.c
 Write a native userspace application that takes a string command, a thread ID, and command specific
 arguments and carries out the operation by executing the respective syscall:
 
-
-kernel/rtes/apps/aperiodic/aperiodic.c
+## kernel/rtes/apps/aperiodic/aperiodic.c
 Write a native userspace application that takes a CA argument on the command line and busy-loops for
 CA ms. Support CA values up to 60,000 ms (60 secs).
 
-kernel/rtes/apps/energymon/
+## kernel/rtes/apps/energymon/
 Write a native application that prints to standard output the frequency, power, and energy quantities
 collected by the kernel (listed in Section 2.4.1) every second. It accepts one argument, tid. If tid is not zero,
 then the energy displayed should be the energy consumed by the respective thread; otherwise the energy
